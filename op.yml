@@ -1,0 +1,110 @@
+name: github.com/opspec-pkgs/github.repo.create
+description: creates a github repository
+inputs:
+  name:
+    string:
+      constraints: { minLength: 1 }
+      description: name of the repo
+  loginUsername:
+    string:
+      constraints: { minLength: 1 }
+      description: user for logging in to github
+  loginPassword:
+    string:
+      constraints: { minLength: 1 }
+      description: password for logging in to github
+      isSecret: true
+  description:
+    string:
+      constraints: { minLength: 1 }
+      description: description of the repo
+      default: ' '
+  gitignoreTemplate:
+    string:
+      constraints: { minLength: 1 }
+      description: .gitignore template to apply to the repo
+      default: ' '
+  homepage:
+    string:
+      constraints: { minLength: 1 }
+      description: homepage of the repo
+      default: ' '
+  isAutoInitEnabled:
+    string:
+      constraints: { enum: ['true', 'false'] }
+      description: if an initial commit should be created for the repo
+      default: 'false'
+  isIssuesEnabled:
+    string:
+      constraints: { enum: ['true', 'false'] }
+      description: if issues are enabled for the repo
+      default: 'true'
+  isMergeMergingAllowed:
+    string:
+      constraints: { enum: ['true', 'false'] }
+      description: if merging merges is allowed for the repo
+      default: 'true'
+  isPrivate:
+    string:
+      constraints: { enum: ['true', 'false'] }
+      description: if the repo is private
+      default: 'false'
+  isProjectsEnabled:
+    string:
+      constraints: { enum: ['true', 'false'] }
+      description: if projects are enabled for the repo
+      default: 'true'
+  isRebaseMergingAllowed:
+    string:
+      constraints: { enum: ['true', 'false'] }
+      description: if merging rebases is allowed for the repo
+      default: 'true'
+  isSquashMergingAllowed:
+    string:
+      constraints: { enum: ['true', 'false'] }
+      description: if merging squashes is allowed for the repo
+      default: 'true'
+  isWikiEnabled:
+    string:
+      constraints: { enum: ['true', 'false'] }
+      description: if the wiki is enabled for the repo
+      default: 'true'
+  licenseTemplate:
+    string:
+      constraints: { minLength: 1 }
+      description: license template to apply to the repo
+      default: ' '
+  teamId:
+    number:
+      constraints: { minimum: 0, format: integer }
+      description: id of team granted access to the repo; only valid when creating an organization repo
+      default: 0
+  org:
+    string:
+      constraints: { minLength: 1 }
+      description: the owning github organization of the repo
+      default: ' '
+version: 1.0.0
+run:
+  container:
+    image: { ref: 'opspecpkgs/github.repo.create:1.0.0' }
+    cmd: [ /cmd.sh ]
+    envVars:
+      name:
+      loginUsername:
+      loginPassword:
+      description:
+      gitignoreTemplate:
+      homepage:
+      isAutoInitEnabled:
+      isIssuesEnabled:
+      isMergeMergingAllowed:
+      isPrivate:
+      isProjectsEnabled:
+      isRebaseMergingAllowed:
+      isSquashMergingAllowed:
+      isWikiEnabled:
+      licenseTemplate:
+      teamId:
+      org:
+    files: { /cmd.sh }
