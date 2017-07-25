@@ -28,8 +28,7 @@ op:
   pkg: { ref: github.com/opspec-pkgs/github.repo.create#VERSION }
   inputs: 
     name:
-    loginUsername:
-    loginPassword:
+    accessToken:
     # begin optional args
     description:
     gitignoreTemplate:
