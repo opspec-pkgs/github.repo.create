@@ -36,8 +36,8 @@ statusCode=$(curl \
     --output \
     /dev/stderr \
     --write-out "%{http_code}" \
-    --user "${loginUsername}:${loginPassword}" \
     -X POST "$url" \
+    --header "Authorization: token ${accessToken}" \
     -d @body)
 
 if test "$statusCode" -ne 201; then
