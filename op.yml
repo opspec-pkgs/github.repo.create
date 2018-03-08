@@ -80,10 +80,10 @@ inputs:
       constraints: { minLength: 1 }
       description: the owning github organization of the repo
       default: ' '
-version: 1.0.0
+version: 1.1.0
 run:
   container:
-    image: { ref: 'opspecpkgs/github.repo.create:1.0.0' }
+    image: { ref: 'opspecpkgs/github.repo.create:1.1.0' }
     cmd: [ /cmd.sh ]
     envVars:
       accessToken:
